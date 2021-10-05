@@ -7,7 +7,6 @@ class Square extends React.Component {
     return (
       <button 
         className="square"
-        //React creates an event listener using this.props.onClick() and when clicked invoked calls the button's onclick eventhandler
         onClick={() => this.props.onClick()}>
         {this.props.value}
       </button>
@@ -23,11 +22,17 @@ class Board extends React.Component {
     };
   }
 
+  handleClick(i){
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});    
+  }
+
   renderSquare(i) {
     return (
       <Square 
         value = {this.state.squares[i]}
-        onClick= {() => this.handleClick(i)}
+        onClick = {() => this.handleClick(i)}
       />
     );
   }
