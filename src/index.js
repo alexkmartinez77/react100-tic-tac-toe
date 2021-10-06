@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-//Square function component
+// ============================= Square Function-Component =============================
+
 function Square(props) {
   return(
     <button 
@@ -13,7 +14,7 @@ function Square(props) {
   )
 }
 
-// Board Component
+// ============================= Board Component =============================
 class Board extends React.Component {
 
   renderSquare(i) {
@@ -48,14 +49,12 @@ class Board extends React.Component {
   }
 }
 
-// Game Component
+// ============================= Game Component =============================
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [{
-        squares: Array(9).fill(null),
-      }],
+      history: [{squares: Array(9).fill(null),}],
       xIsNext: true,
     };
   }
@@ -88,12 +87,11 @@ class Game extends React.Component {
         'Go to move #' + move :
         'Go to game start';
       return (
-        <li>
+        <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     });
-
     let status;
     if(winner){
       status = 'Winner: ' + winner;
