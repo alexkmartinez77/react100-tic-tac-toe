@@ -74,6 +74,7 @@ class Game extends React.Component {
       history: history.concat([{
         squares: squares,
       }]),
+      stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });    
   }
@@ -82,12 +83,12 @@ class Game extends React.Component {
     this.setState({
       stepnumber: step,
       XIsNext: (step % 2) === 0,
-    })
+          })
   }
 
   render() {
     const history = this.state.history;
-    const current = history[history.length-1];
+    const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
